@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		38F2AFFB18F47DD6007B7DD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */; };
+		38F2AFFD18F47DD6007B7DD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */; };
+		38F2AFFF18F47DD6007B7DD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFE18F47DD6007B7DD4 /* UIKit.framework */; };
+		38F2B00518F47DD6007B7DD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38F2B00318F47DD6007B7DD4 /* InfoPlist.strings */; };
+		38F2B00718F47DD6007B7DD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F2B00618F47DD6007B7DD4 /* main.m */; };
+		38F2B00B18F47DD6007B7DD4 /* PathFinderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F2B00A18F47DD6007B7DD4 /* PathFinderAppDelegate.m */; };
+		38F2B00E18F47DD6007B7DD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F2B00C18F47DD6007B7DD4 /* Main.storyboard */; };
+		38F2B01118F47DD6007B7DD4 /* PathFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F2B01018F47DD6007B7DD4 /* PathFinderViewController.m */; };
+		38F2B01318F47DD6007B7DD4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F2B01218F47DD6007B7DD4 /* Images.xcassets */; };
+		38F2B01A18F47DD6007B7DD4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B01918F47DD6007B7DD4 /* XCTest.framework */; };
+		38F2B01B18F47DD6007B7DD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */; };
+		38F2B01C18F47DD6007B7DD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFE18F47DD6007B7DD4 /* UIKit.framework */; };
+		38F2B02418F47DD6007B7DD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38F2B02218F47DD6007B7DD4 /* InfoPlist.strings */; };
+		38F2B02618F47DD6007B7DD4 /* pathFinder_Core_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F2B02518F47DD6007B7DD4 /* pathFinder_Core_DemoTests.m */; };
+		38F2B03018F483DD007B7DD4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B02F18F483DD007B7DD4 /* CoreLocation.framework */; };
+		38F2B03218F49101007B7DD4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B03118F49101007B7DD4 /* GoogleMaps.framework */; };
+		38F2B03418F49120007B7DD4 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38F2B03318F49120007B7DD4 /* GoogleMaps.bundle */; };
+		38F2B03618F4913C007B7DD4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B03518F4913C007B7DD4 /* AVFoundation.framework */; };
+		38F2B03818F49145007B7DD4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B03718F49145007B7DD4 /* CoreData.framework */; };
+		38F2B03A18F4914D007B7DD4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B03918F4914D007B7DD4 /* GLKit.framework */; };
+		38F2B03C18F49155007B7DD4 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B03B18F49155007B7DD4 /* ImageIO.framework */; };
+		38F2B04018F4916A007B7DD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B03F18F4916A007B7DD4 /* libicucore.dylib */; };
+		38F2B04218F49173007B7DD4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B04118F49173007B7DD4 /* libz.dylib */; };
+		38F2B04418F49178007B7DD4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B04318F49178007B7DD4 /* OpenGLES.framework */; };
+		38F2B04618F4917E007B7DD4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B04518F4917E007B7DD4 /* QuartzCore.framework */; };
+		38F2B04818F49187007B7DD4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B04718F49187007B7DD4 /* SystemConfiguration.framework */; };
+		38F2B04A18F49E04007B7DD4 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2B04918F49E04007B7DD4 /* libc++.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		38F2B01D18F47DD6007B7DD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38F2AFEF18F47DD6007B7DD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38F2AFF618F47DD6007B7DD4;
+			remoteInfo = "pathFinder Core Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		38F2AFF718F47DD6007B7DD4 /* pathFinder Core Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pathFinder Core Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		38F2AFFE18F47DD6007B7DD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		38F2B00218F47DD6007B7DD4 /* pathFinder Core Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "pathFinder Core Demo-Info.plist"; sourceTree = "<group>"; };
+		38F2B00418F47DD6007B7DD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		38F2B00618F47DD6007B7DD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		38F2B00818F47DD6007B7DD4 /* pathFinder Core Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pathFinder Core Demo-Prefix.pch"; sourceTree = "<group>"; };
+		38F2B00918F47DD6007B7DD4 /* PathFinderAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathFinderAppDelegate.h; sourceTree = "<group>"; };
+		38F2B00A18F47DD6007B7DD4 /* PathFinderAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinderAppDelegate.m; sourceTree = "<group>"; };
+		38F2B00D18F47DD6007B7DD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		38F2B00F18F47DD6007B7DD4 /* PathFinderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathFinderViewController.h; sourceTree = "<group>"; };
+		38F2B01018F47DD6007B7DD4 /* PathFinderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinderViewController.m; sourceTree = "<group>"; };
+		38F2B01218F47DD6007B7DD4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		38F2B01818F47DD6007B7DD4 /* pathFinder Core DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pathFinder Core DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38F2B01918F47DD6007B7DD4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		38F2B02118F47DD6007B7DD4 /* pathFinder Core DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "pathFinder Core DemoTests-Info.plist"; sourceTree = "<group>"; };
+		38F2B02318F47DD6007B7DD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		38F2B02518F47DD6007B7DD4 /* pathFinder_Core_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pathFinder_Core_DemoTests.m; sourceTree = "<group>"; };
+		38F2B02F18F483DD007B7DD4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		38F2B03118F49101007B7DD4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		38F2B03318F49120007B7DD4 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		38F2B03518F4913C007B7DD4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		38F2B03718F49145007B7DD4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		38F2B03918F4914D007B7DD4 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		38F2B03B18F49155007B7DD4 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		38F2B03F18F4916A007B7DD4 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		38F2B04118F49173007B7DD4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		38F2B04318F49178007B7DD4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		38F2B04518F4917E007B7DD4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		38F2B04718F49187007B7DD4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		38F2B04918F49E04007B7DD4 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38F2AFF418F47DD6007B7DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38F2B04A18F49E04007B7DD4 /* libc++.dylib in Frameworks */,
+				38F2B04818F49187007B7DD4 /* SystemConfiguration.framework in Frameworks */,
+				38F2B04618F4917E007B7DD4 /* QuartzCore.framework in Frameworks */,
+				38F2B04418F49178007B7DD4 /* OpenGLES.framework in Frameworks */,
+				38F2B04218F49173007B7DD4 /* libz.dylib in Frameworks */,
+				38F2B04018F4916A007B7DD4 /* libicucore.dylib in Frameworks */,
+				38F2B03C18F49155007B7DD4 /* ImageIO.framework in Frameworks */,
+				38F2B03A18F4914D007B7DD4 /* GLKit.framework in Frameworks */,
+				38F2B03818F49145007B7DD4 /* CoreData.framework in Frameworks */,
+				38F2B03618F4913C007B7DD4 /* AVFoundation.framework in Frameworks */,
+				38F2B03018F483DD007B7DD4 /* CoreLocation.framework in Frameworks */,
+				38F2AFFD18F47DD6007B7DD4 /* CoreGraphics.framework in Frameworks */,
+				38F2AFFF18F47DD6007B7DD4 /* UIKit.framework in Frameworks */,
+				38F2B03218F49101007B7DD4 /* GoogleMaps.framework in Frameworks */,
+				38F2AFFB18F47DD6007B7DD4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38F2B01518F47DD6007B7DD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38F2B01A18F47DD6007B7DD4 /* XCTest.framework in Frameworks */,
+				38F2B01C18F47DD6007B7DD4 /* UIKit.framework in Frameworks */,
+				38F2B01B18F47DD6007B7DD4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		38F2AFEE18F47DD6007B7DD4 = {
+			isa = PBXGroup;
+			children = (
+				38F2B00018F47DD6007B7DD4 /* pathFinder Core Demo */,
+				38F2B01F18F47DD6007B7DD4 /* pathFinder Core DemoTests */,
+				38F2AFF918F47DD6007B7DD4 /* Frameworks */,
+				38F2AFF818F47DD6007B7DD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		38F2AFF818F47DD6007B7DD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38F2AFF718F47DD6007B7DD4 /* pathFinder Core Demo.app */,
+				38F2B01818F47DD6007B7DD4 /* pathFinder Core DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		38F2AFF918F47DD6007B7DD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38F2B04918F49E04007B7DD4 /* libc++.dylib */,
+				38F2B04718F49187007B7DD4 /* SystemConfiguration.framework */,
+				38F2B04518F4917E007B7DD4 /* QuartzCore.framework */,
+				38F2B04318F49178007B7DD4 /* OpenGLES.framework */,
+				38F2B04118F49173007B7DD4 /* libz.dylib */,
+				38F2B03F18F4916A007B7DD4 /* libicucore.dylib */,
+				38F2B03B18F49155007B7DD4 /* ImageIO.framework */,
+				38F2B03918F4914D007B7DD4 /* GLKit.framework */,
+				38F2B03718F49145007B7DD4 /* CoreData.framework */,
+				38F2B03518F4913C007B7DD4 /* AVFoundation.framework */,
+				38F2B03318F49120007B7DD4 /* GoogleMaps.bundle */,
+				38F2B03118F49101007B7DD4 /* GoogleMaps.framework */,
+				38F2B02F18F483DD007B7DD4 /* CoreLocation.framework */,
+				38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */,
+				38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */,
+				38F2AFFE18F47DD6007B7DD4 /* UIKit.framework */,
+				38F2B01918F47DD6007B7DD4 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		38F2B00018F47DD6007B7DD4 /* pathFinder Core Demo */ = {
+			isa = PBXGroup;
+			children = (
+				38F2B00918F47DD6007B7DD4 /* PathFinderAppDelegate.h */,
+				38F2B00A18F47DD6007B7DD4 /* PathFinderAppDelegate.m */,
+				38F2B00C18F47DD6007B7DD4 /* Main.storyboard */,
+				38F2B00F18F47DD6007B7DD4 /* PathFinderViewController.h */,
+				38F2B01018F47DD6007B7DD4 /* PathFinderViewController.m */,
+				38F2B01218F47DD6007B7DD4 /* Images.xcassets */,
+				38F2B00118F47DD6007B7DD4 /* Supporting Files */,
+			);
+			path = "pathFinder Core Demo";
+			sourceTree = "<group>";
+		};
+		38F2B00118F47DD6007B7DD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38F2B00218F47DD6007B7DD4 /* pathFinder Core Demo-Info.plist */,
+				38F2B00318F47DD6007B7DD4 /* InfoPlist.strings */,
+				38F2B00618F47DD6007B7DD4 /* main.m */,
+				38F2B00818F47DD6007B7DD4 /* pathFinder Core Demo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38F2B01F18F47DD6007B7DD4 /* pathFinder Core DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				38F2B02518F47DD6007B7DD4 /* pathFinder_Core_DemoTests.m */,
+				38F2B02018F47DD6007B7DD4 /* Supporting Files */,
+			);
+			path = "pathFinder Core DemoTests";
+			sourceTree = "<group>";
+		};
+		38F2B02018F47DD6007B7DD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38F2B02118F47DD6007B7DD4 /* pathFinder Core DemoTests-Info.plist */,
+				38F2B02218F47DD6007B7DD4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		38F2AFF618F47DD6007B7DD4 /* pathFinder Core Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38F2B02918F47DD6007B7DD4 /* Build configuration list for PBXNativeTarget "pathFinder Core Demo" */;
+			buildPhases = (
+				38F2AFF318F47DD6007B7DD4 /* Sources */,
+				38F2AFF418F47DD6007B7DD4 /* Frameworks */,
+				38F2AFF518F47DD6007B7DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "pathFinder Core Demo";
+			productName = "pathFinder Core Demo";
+			productReference = 38F2AFF718F47DD6007B7DD4 /* pathFinder Core Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		38F2B01718F47DD6007B7DD4 /* pathFinder Core DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38F2B02C18F47DD6007B7DD4 /* Build configuration list for PBXNativeTarget "pathFinder Core DemoTests" */;
+			buildPhases = (
+				38F2B01418F47DD6007B7DD4 /* Sources */,
+				38F2B01518F47DD6007B7DD4 /* Frameworks */,
+				38F2B01618F47DD6007B7DD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				38F2B01E18F47DD6007B7DD4 /* PBXTargetDependency */,
+			);
+			name = "pathFinder Core DemoTests";
+			productName = "pathFinder Core DemoTests";
+			productReference = 38F2B01818F47DD6007B7DD4 /* pathFinder Core DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		38F2AFEF18F47DD6007B7DD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PathFinder;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Delta Lab";
+				TargetAttributes = {
+					38F2B01718F47DD6007B7DD4 = {
+						TestTargetID = 38F2AFF618F47DD6007B7DD4;
+					};
+				};
+			};
+			buildConfigurationList = 38F2AFF218F47DD6007B7DD4 /* Build configuration list for PBXProject "pathFinder Core Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 38F2AFEE18F47DD6007B7DD4;
+			productRefGroup = 38F2AFF818F47DD6007B7DD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				38F2AFF618F47DD6007B7DD4 /* pathFinder Core Demo */,
+				38F2B01718F47DD6007B7DD4 /* pathFinder Core DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		38F2AFF518F47DD6007B7DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38F2B01318F47DD6007B7DD4 /* Images.xcassets in Resources */,
+				38F2B00518F47DD6007B7DD4 /* InfoPlist.strings in Resources */,
+				38F2B00E18F47DD6007B7DD4 /* Main.storyboard in Resources */,
+				38F2B03418F49120007B7DD4 /* GoogleMaps.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38F2B01618F47DD6007B7DD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38F2B02418F47DD6007B7DD4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38F2AFF318F47DD6007B7DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38F2B00718F47DD6007B7DD4 /* main.m in Sources */,
+				38F2B01118F47DD6007B7DD4 /* PathFinderViewController.m in Sources */,
+				38F2B00B18F47DD6007B7DD4 /* PathFinderAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38F2B01418F47DD6007B7DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38F2B02618F47DD6007B7DD4 /* pathFinder_Core_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		38F2B01E18F47DD6007B7DD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38F2AFF618F47DD6007B7DD4 /* pathFinder Core Demo */;
+			targetProxy = 38F2B01D18F47DD6007B7DD4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		38F2B00318F47DD6007B7DD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38F2B00418F47DD6007B7DD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		38F2B00C18F47DD6007B7DD4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38F2B00D18F47DD6007B7DD4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		38F2B02218F47DD6007B7DD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38F2B02318F47DD6007B7DD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		38F2B02718F47DD6007B7DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		38F2B02818F47DD6007B7DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		38F2B02A18F47DD6007B7DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/deltalab/Documents/Nick\\ Scoliard/pathFinder\\ Core\\ Demo",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pathFinder Core Demo/pathFinder Core Demo-Prefix.pch";
+				INFOPLIST_FILE = "pathFinder Core Demo/pathFinder Core Demo-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		38F2B02B18F47DD6007B7DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/deltalab/Documents/Nick\\ Scoliard/pathFinder\\ Core\\ Demo",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pathFinder Core Demo/pathFinder Core Demo-Prefix.pch";
+				INFOPLIST_FILE = "pathFinder Core Demo/pathFinder Core Demo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		38F2B02D18F47DD6007B7DD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/pathFinder Core Demo.app/pathFinder Core Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pathFinder Core Demo/pathFinder Core Demo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "pathFinder Core DemoTests/pathFinder Core DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		38F2B02E18F47DD6007B7DD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/pathFinder Core Demo.app/pathFinder Core Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "pathFinder Core Demo/pathFinder Core Demo-Prefix.pch";
+				INFOPLIST_FILE = "pathFinder Core DemoTests/pathFinder Core DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38F2AFF218F47DD6007B7DD4 /* Build configuration list for PBXProject "pathFinder Core Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38F2B02718F47DD6007B7DD4 /* Debug */,
+				38F2B02818F47DD6007B7DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38F2B02918F47DD6007B7DD4 /* Build configuration list for PBXNativeTarget "pathFinder Core Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38F2B02A18F47DD6007B7DD4 /* Debug */,
+				38F2B02B18F47DD6007B7DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38F2B02C18F47DD6007B7DD4 /* Build configuration list for PBXNativeTarget "pathFinder Core DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38F2B02D18F47DD6007B7DD4 /* Debug */,
+				38F2B02E18F47DD6007B7DD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 38F2AFEF18F47DD6007B7DD4 /* Project object */;
+}

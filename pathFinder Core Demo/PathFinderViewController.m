@@ -10,10 +10,19 @@
 
 @interface PathFinderViewController ()
 - (IBAction)getLocation:(id)sender;
+- (IBAction)stopTracking:(id)sender;
 - (IBAction)showRoute:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *startLocation;
 @property (weak, nonatomic) IBOutlet UIButton* stoplocation;
+@property (weak, nonatomic) IBOutlet UILabel *trackLocation;
+@property (weak, nonatomic) IBOutlet UIButton *stopTracking;
+@property (weak, nonatomic) IBOutlet UILabel *timePath;
+@property (weak, nonatomic) IBOutlet UILabel *timeOfPath;
 @property (strong, nonatomic) GMSMutablePath *testPath;
+@property (nonatomic) NSTimeInterval timeStart;
+@property (weak, nonatomic) IBOutlet UILabel *lengthPath;
+@property (weak, nonatomic) IBOutlet UILabel *forLength;
+@property (nonatomic) PFObject* parsePath;
 @end
 
 
@@ -28,13 +37,20 @@ CLLocationManager *locationManager;
     return _testPath;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self.stoplocation setHidden:TRUE];
+    [self.trackLocation setHidden:TRUE];
+    [self.stopTracking setHidden:TRUE];
+    [self.timePath setHidden:TRUE];
+    [self.timeOfPath setHidden:TRUE];
+    [self.lengthPath setHidden:TRUE];
+    [self.forLength setHidden:TRUE];
     locationManager = [[CLLocationManager alloc] init];
+    
+    self.parsePath = [[PFObject alloc] initWithClassName:@"ParsePath"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,15 +63,62 @@ CLLocationManager *locationManager;
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
-    [self.stoplocation setHidden:FALSE];
+    [self.stopTracking setHidden:FALSE];
     [self.startLocation setHidden:TRUE];
+    [self.trackLocation setHidden:FALSE];
+    
+    self.timeStart = [[NSDate date] timeIntervalSince1970];
     
     [locationManager startUpdatingLocation];
 }
 
-- (IBAction)showRoute:(id)sender {
+- (IBAction)stopTracking:(id)sender {
     [locationManager stopUpdatingLocation];
     
+    [self.stopTracking setHidden:TRUE];
+    [self.trackLocation setHidden:TRUE];
+    [self.timeOfPath setHidden:FALSE];
+    [self.timePath setHidden:FALSE];
+    [self.stoplocation setHidden:FALSE];
+    [self.lengthPath setHidden:FALSE];
+    [self.forLength setHidden:FALSE];
+    
+    NSDate *timeSince = [[NSDate alloc] initWithTimeIntervalSince1970:self.timeStart];
+    
+    NSTimeInterval timeOfPath = -1 * [timeSince timeIntervalSinceNow];
+    
+    if (timeOfPath < 60) {
+        self.timeOfPath.text = [NSString stringWithFormat:@"%.0f s", timeOfPath];
+    }
+    else {
+        NSTimeInterval timeInSec = fmod(timeOfPath, 60.0);
+        
+        NSTimeInterval timeInMin = (timeOfPath - timeInSec)/60;
+    
+        self.timeOfPath.text = [NSString stringWithFormat:@"%.0f min  %.0f s", timeInMin, timeInSec];
+    }
+    
+    CLLocationCoordinate2D first = [self.testPath coordinateAtIndex:0];
+    
+    CLLocation* firstPointer = [[CLLocation alloc] initWithCoordinate:first altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:timeSince];
+    
+    CLLocationCoordinate2D last = [self.testPath coordinateAtIndex:self.testPath.count - 1];
+    
+    CLLocation* lastPointer = [[CLLocation alloc] initWithCoordinate:last altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:timeSince];
+    
+    CLLocationDistance pathDist = [firstPointer distanceFromLocation:lastPointer];
+    
+    if (pathDist < 1000) {
+        self.forLength.text = [NSString stringWithFormat:@"%.2f meters", pathDist];
+    }
+    else {
+        pathDist = pathDist/1000;
+        self.forLength.text = [NSString stringWithFormat:@"%.2f km", pathDist];
+    }
+}
+
+- (IBAction)showRoute:(id)sender {
+   
     GMSPolyline *route = [GMSPolyline polylineWithPath:self.testPath];
     
     CLLocationCoordinate2D cameraCoord = [self.testPath coordinateAtIndex:0];
@@ -92,6 +155,9 @@ CLLocationManager *locationManager;
     
     if (currentLocation != nil) {
         [self.testPath addCoordinate:currentLocation.coordinate];
+        [self.parsePath addObject:@(currentLocation.coordinate.latitude) forKey:@"latitude"];
+        [self.parsePath addObject:@(currentLocation.coordinate.longitude) forKey:@"longitude"];
+        [self.parsePath saveInBackground];
     }
 }
 @end

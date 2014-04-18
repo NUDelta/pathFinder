@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <Parse/Parse.h>
 
 @interface PathFinderViewController : UIViewController <CLLocationManagerDelegate>
-
 @end

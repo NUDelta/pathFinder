@@ -7,12 +7,20 @@
 //
 
 #import "PathFinderAppDelegate.h"
+#import <Parse/Parse.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <Social/Social.h>
 
 @implementation PathFinderAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [GMSServices provideAPIKey:@"AIzaSyBEYNGoO2Kdua2XuvHcJi0dcYduPxTb0Os"];
+    [Parse setApplicationId:@"8OHIB3e7u5YZYNik7B5aOMU4cpK40Qn6yyZBhQLB"
+        clientKey:@"eVnuTcUms1omdGOYmzCeCTlIDrXNiWYmWXZwkYyr"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     // Override point for customization after application launch.
     return YES;
 }

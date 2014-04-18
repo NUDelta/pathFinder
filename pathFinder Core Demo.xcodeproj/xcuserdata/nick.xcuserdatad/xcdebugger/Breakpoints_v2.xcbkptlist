@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pathFinder Core Demo/PathFinderViewController.m"
-            timestampString = "419492554.588791"
+            timestampString = "419534790.530045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-stopTracking:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "pathFinder Core Demo/PathFinderViewController.m"
-            timestampString = "419492146.543444"
+            timestampString = "419534506.733389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29">
+            startingLineNumber = "30"
+            endingLineNumber = "30">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

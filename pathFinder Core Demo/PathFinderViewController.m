@@ -22,6 +22,7 @@
 @property (nonatomic) NSTimeInterval timeStart;
 @property (weak, nonatomic) IBOutlet UILabel *lengthPath;
 @property (weak, nonatomic) IBOutlet UILabel *forLength;
+@property (weak, nonatomic) IBOutlet UILabel *forLength2;
 @property (nonatomic) PFObject* parsePath;
 @end
 
@@ -98,22 +99,14 @@ CLLocationManager *locationManager;
         self.timeOfPath.text = [NSString stringWithFormat:@"%.0f min  %.0f s", timeInMin, timeInSec];
     }
     
-    CLLocationCoordinate2D first = [self.testPath coordinateAtIndex:0];
+    CLLocationDistance length2 = [self.testPath lengthOfKind:kGMSLengthRhumb];
     
-    CLLocation* firstPointer = [[CLLocation alloc] initWithCoordinate:first altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:timeSince];
-    
-    CLLocationCoordinate2D last = [self.testPath coordinateAtIndex:self.testPath.count - 1];
-    
-    CLLocation* lastPointer = [[CLLocation alloc] initWithCoordinate:last altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:timeSince];
-    
-    CLLocationDistance pathDist = [firstPointer distanceFromLocation:lastPointer];
-    
-    if (pathDist < 1000) {
-        self.forLength.text = [NSString stringWithFormat:@"%.2f meters", pathDist];
+    if (length2 < 1000) {
+        self.forLength.text = [NSString stringWithFormat:@"%.2f meters", length2];
     }
     else {
-        pathDist = pathDist/1000;
-        self.forLength.text = [NSString stringWithFormat:@"%.2f km", pathDist];
+        length2 = length2/1000;
+        self.forLength.text = [NSString stringWithFormat:@"%.2f km", length2];
     }
 }
 
@@ -157,6 +150,7 @@ CLLocationManager *locationManager;
         [self.testPath addCoordinate:currentLocation.coordinate];
         [self.parsePath addObject:@(currentLocation.coordinate.latitude) forKey:@"latitude"];
         [self.parsePath addObject:@(currentLocation.coordinate.longitude) forKey:@"longitude"];
+        [self.parsePath addObject:@([[NSDate date] timeIntervalSince1970]) forKey:@"timeStamps"];
         [self.parsePath saveInBackground];
     }
 }

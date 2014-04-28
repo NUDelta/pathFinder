@@ -16,6 +16,7 @@
 		012788EF1900AB9C00ADFF5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EE1900AB9C00ADFF5A /* StoreKit.framework */; };
 		01EA133519017635004684AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA133419017635004684AF /* FacebookSDK.framework */; };
 		01EA1337190178AD004684AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA1336190178AD004684AF /* Social.framework */; };
+		01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EA133C190A2A16004684AF /* RouteTableViewController.m */; };
 		38F2AFFB18F47DD6007B7DD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */; };
 		38F2AFFD18F47DD6007B7DD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */; };
 		38F2AFFF18F47DD6007B7DD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFE18F47DD6007B7DD4 /* UIKit.framework */; };
@@ -65,6 +66,8 @@
 		014D45511900F9C700E25A32 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		01EA133419017635004684AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		01EA1336190178AD004684AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		01EA133B190A2A16004684AF /* RouteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableViewController.h; sourceTree = "<group>"; };
+		01EA133C190A2A16004684AF /* RouteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteTableViewController.m; sourceTree = "<group>"; };
 		38F2AFF718F47DD6007B7DD4 /* pathFinder Core Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pathFinder Core Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -204,6 +207,8 @@
 				38F2B01018F47DD6007B7DD4 /* PathFinderViewController.m */,
 				38F2B01218F47DD6007B7DD4 /* Images.xcassets */,
 				38F2B00118F47DD6007B7DD4 /* Supporting Files */,
+				01EA133B190A2A16004684AF /* RouteTableViewController.h */,
+				01EA133C190A2A16004684AF /* RouteTableViewController.m */,
 			);
 			path = "pathFinder Core Demo";
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				38F2B00718F47DD6007B7DD4 /* main.m in Sources */,
 				38F2B01118F47DD6007B7DD4 /* PathFinderViewController.m in Sources */,
 				38F2B00B18F47DD6007B7DD4 /* PathFinderAppDelegate.m in Sources */,
+				01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

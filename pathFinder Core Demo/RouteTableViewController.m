@@ -36,7 +36,7 @@
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
-    /*self.latitude = [[NSMutableArray alloc] init];
+    self.latitude = [[NSMutableArray alloc] init];
     self.longitude = [[NSMutableArray alloc] init];
     self.startTimes = [[NSMutableArray alloc] init];
     self.stopTimes = [[NSMutableArray alloc] init];
@@ -68,7 +68,7 @@
             NSLog(@"error");
         }
         
-    }];*/
+    }];
     
         
         
@@ -115,12 +115,34 @@
     NSArray *holder = [query findObjects];
 
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",[[holder[0] objectForKey:@"latitude"] objectAtIndex:0]];
-
+    cell.textLabel.text = [NSString stringWithFormat:@"Route %d", indexPath.row + 1];
     
     return cell;
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"CellToMap"]) {
+        PathFinderMapViewController *control = [segue destinationViewController];
+        
+        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        
+        NSArray *latHolder  = self.latitude[ip.row];
+        
+        NSArray* longHolder = self.longitude[ip.row];
+        
+        NSLog(@"Lat: %@, Long: %@", latHolder[0], longHolder[1]);
+        
+        
+        control.route = [[GMSMutablePath alloc] init];
+        
+        for (int i = 0; i < latHolder.count; i++) {
+            [control.route addLatitude:[latHolder[i] doubleValue] longitude:[longHolder[i] doubleValue]];
+        }
+        
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

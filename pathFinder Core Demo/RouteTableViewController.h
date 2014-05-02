@@ -11,6 +11,8 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 
+#import "PathFinderMapViewController.h"
+
 
 @interface RouteTableViewController : UITableViewController
 

@@ -14,6 +14,7 @@
 		012788EB1900AB8500ADFF5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EA1900AB8500ADFF5A /* MobileCoreServices.framework */; };
 		012788ED1900AB9400ADFF5A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EC1900AB9400ADFF5A /* Security.framework */; };
 		012788EF1900AB9C00ADFF5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EE1900AB9C00ADFF5A /* StoreKit.framework */; };
+		01A0CEBC191376F400AAC9BB /* PathFinderMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A0CEBB191376F400AAC9BB /* PathFinderMapViewController.m */; };
 		01EA133519017635004684AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA133419017635004684AF /* FacebookSDK.framework */; };
 		01EA1337190178AD004684AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA1336190178AD004684AF /* Social.framework */; };
 		01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EA133C190A2A16004684AF /* RouteTableViewController.m */; };
@@ -64,6 +65,8 @@
 		012788EC1900AB9400ADFF5A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		012788EE1900AB9C00ADFF5A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		014D45511900F9C700E25A32 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		01A0CEBA191376F400AAC9BB /* PathFinderMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinderMapViewController.h; sourceTree = "<group>"; };
+		01A0CEBB191376F400AAC9BB /* PathFinderMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinderMapViewController.m; sourceTree = "<group>"; };
 		01EA133419017635004684AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		01EA1336190178AD004684AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		01EA133B190A2A16004684AF /* RouteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableViewController.h; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 		38F2B00018F47DD6007B7DD4 /* pathFinder Core Demo */ = {
 			isa = PBXGroup;
 			children = (
+				01A0CEBA191376F400AAC9BB /* PathFinderMapViewController.h */,
+				01A0CEBB191376F400AAC9BB /* PathFinderMapViewController.m */,
 				38F2B00918F47DD6007B7DD4 /* PathFinderAppDelegate.h */,
 				38F2B00A18F47DD6007B7DD4 /* PathFinderAppDelegate.m */,
 				38F2B00C18F47DD6007B7DD4 /* Main.storyboard */,
@@ -348,6 +353,7 @@
 				38F2B01118F47DD6007B7DD4 /* PathFinderViewController.m in Sources */,
 				38F2B00B18F47DD6007B7DD4 /* PathFinderAppDelegate.m in Sources */,
 				01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */,
+				01A0CEBC191376F400AAC9BB /* PathFinderMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

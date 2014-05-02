@@ -15,42 +15,29 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="71U-wT-TV4"/>
-                        <segue destination="I41-c9-9OK" kind="relationship" relationship="viewControllers" id="ebb-fv-zSh"/>
+                        <segue destination="3CL-ed-wqx" kind="relationship" relationship="viewControllers" id="ti7-ox-7FX"/>
+                        <segue destination="A1U-Cd-8ai" kind="relationship" relationship="viewControllers" id="w9m-hp-i50"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAL-Dg-DMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-760" y="406"/>
         </scene>
-        <!--Route Table View Controller - View other Routes-->
-        <scene sceneID="x7f-MB-BvG">
+        <!--Navigation Controller - Track Your Route-->
+        <scene sceneID="qAt-XW-N74">
             <objects>
-                <tableViewController id="I41-c9-9OK" customClass="RouteTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JoC-Fk-bH3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WYF-6H-mRC">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WYF-6H-mRC" id="BE7-du-fvP">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="I41-c9-9OK" id="xTU-j1-dcv"/>
-                            <outlet property="delegate" destination="I41-c9-9OK" id="gYa-al-PUW"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="View other Routes" id="tn0-mf-ITS"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rhy-ev-I4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GqM-AD-oTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="3CL-ed-wqx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Track Your Route" id="BSA-tM-vpY"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="biq-HC-vmZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="znm-83-88H"/>
+                    </connections>
+                </navigationController>
             </objects>
-            <point key="canvasLocation" x="-207" y="744"/>
+            <point key="canvasLocation" x="-143" y="36"/>
         </scene>
         <!--Path Finder View Controller - Track your Route-->
         <scene sceneID="ufC-wZ-h7g">
@@ -82,6 +69,7 @@
                                 </state>
                                 <connections>
                                     <action selector="showRoute:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="v8Z-va-fzw"/>
+                                    <segue destination="Wm4-bE-5dF" kind="push" identifier="RouteToMap" id="Yct-B3-u1N"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tracking Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-4h-d4v">
@@ -129,6 +117,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Track your Route" image="button_background.png" id="NPo-go-eB6"/>
+                    <navigationItem key="navigationItem" id="qR9-rk-UU9"/>
                     <connections>
                         <outlet property="forLength" destination="EdB-wr-qJ1" id="X7s-xB-wLd"/>
                         <outlet property="lengthPath" destination="J39-aF-EuH" id="QWm-zr-HGj"/>
@@ -142,7 +131,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213" y="65"/>
+            <point key="canvasLocation" x="419" y="-475"/>
+        </scene>
+        <!--Path Finder Map View Controller-->
+        <scene sceneID="Bhy-of-fSo">
+            <objects>
+                <viewController id="Wm4-bE-5dF" customClass="PathFinderMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ac9-Af-Btw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Be0-3I-FRr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dGa-1r-yWm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MCs-pz-EzW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jc-Xt-Aze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="427" y="116"/>
+        </scene>
+        <!--Route Table View Controller - Root View Controller-->
+        <scene sceneID="ERa-ZG-eIK">
+            <objects>
+                <tableViewController id="3Gc-H9-fMD" customClass="RouteTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NdU-dK-P6r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" id="dHx-pw-fMx">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHx-pw-fMx" id="OIg-Rh-VMU">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Gc-H9-fMD" id="ebz-E0-W87"/>
+                            <outlet property="delegate" destination="3Gc-H9-fMD" id="gsk-fR-nQv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="j8i-1C-VjS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4DY-TZ-uQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="290" y="645"/>
+        </scene>
+        <!--Navigation Controller - View Your Route-->
+        <scene sceneID="l5X-mS-0QY">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="A1U-Cd-8ai" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="View Your Route" id="ZXv-YY-6Xc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EkF-aj-X4T">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3Gc-H9-fMD" kind="relationship" relationship="rootViewController" id="uvv-IE-1Rn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIo-04-wfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-208" y="645"/>
         </scene>
     </scenes>
     <resources>

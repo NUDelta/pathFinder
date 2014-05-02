@@ -14,6 +14,7 @@
 @property (nonatomic) NSMutableArray *startTimes;
 @property (nonatomic) NSMutableArray *stopTimes;
 @property (nonatomic) GMSMutablePath *testPath;
+@property BOOL parseAdded;
 @end
 
 @implementation RouteTableViewController
@@ -21,6 +22,7 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
+    NSLog(@"%@", @"first");
     if (self) {
         // Custom initialization
     }
@@ -34,12 +36,11 @@
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
-    self.latitude = [[NSMutableArray alloc] init];
+    /*self.latitude = [[NSMutableArray alloc] init];
     self.longitude = [[NSMutableArray alloc] init];
     self.startTimes = [[NSMutableArray alloc] init];
     self.stopTimes = [[NSMutableArray alloc] init];
     
-    NSLog(@"got here");
     PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -60,20 +61,20 @@
                 i++;
             }
             
-            NSLog(@"%@", self.latitude[self.latitude.count - 1]);
+            NSLog(@"%@  %@", self.startTimes[0], self.latitude[0][0]);
         
         }
         else {
             NSLog(@"error");
         }
         
-    }];
+    }];*/
     
         
         
             
             
-        }
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -86,28 +87,40 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
-    return 0;
+    return 1;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 0;
+ 
+    return 5;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TableCell"];
+    }
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
+    NSArray *holder = [query findObjects];
+
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",[[holder[0] objectForKey:@"latitude"] objectAtIndex:0]];
+
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

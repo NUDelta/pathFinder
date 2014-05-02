@@ -21,7 +21,12 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+   
+    
     // Override point for customization after application launch.
+    
+    self.vController = [[UITableViewController alloc] initWithNibName:@"UITableViewController" bundle:nil];
+    
     return YES;
 }
 							

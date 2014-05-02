@@ -112,19 +112,18 @@ CLLocationManager *locationManager;
 
 - (IBAction)showRoute:(id)sender {
    
-    GMSPolyline *route = [GMSPolyline polylineWithPath:self.testPath];
-    
-    CLLocationCoordinate2D cameraCoord = [self.testPath coordinateAtIndex:0];
-    
-    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectZero camera:[GMSCameraPosition cameraWithLatitude:cameraCoord.latitude longitude:cameraCoord.longitude zoom:16]];
-    
     [self.testPath removeAllCoordinates];
     
-    route.strokeColor = [UIColor blueColor];
-    route.strokeWidth = 1.f;
-    route.map = mapView;
+    [self.stoplocation setHidden:TRUE];
+    [self.trackLocation setHidden:TRUE];
+    [self.stopTracking setHidden:TRUE];
+    [self.timePath setHidden:TRUE];
+    [self.timeOfPath setHidden:TRUE];
+    [self.lengthPath setHidden:TRUE];
+    [self.forLength setHidden:TRUE];
+    [self.startLocation setHidden:FALSE];
     
-    self.view = mapView;
+    
     
 }
 
@@ -154,4 +153,22 @@ CLLocationManager *locationManager;
         [self.parsePath saveInBackground];
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"RouteToMap"]) {
+        PathFinderMapViewController *control = [segue destinationViewController];
+        
+        control.route = [[GMSMutablePath alloc] initWithPath:self.testPath];
+        
+        //for (int i = 0; i < self.testPath.count; i++) {
+        //    [control.route addCoordinate:[self.testPath coordinateAtIndex:i]];
+        //    NSLog(@"Path: %d, Route: %d", self.testPath.count, control.route.count);
+        //}
+
+    }
+}
+
 @end

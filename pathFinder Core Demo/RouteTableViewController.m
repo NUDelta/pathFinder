@@ -15,9 +15,13 @@
 @property (nonatomic) NSMutableArray *stopTimes;
 @property (nonatomic) GMSMutablePath *testPath;
 @property BOOL parseAdded;
+@property float currentLat;
+@property float currentLong;
 @end
 
 @implementation RouteTableViewController
+CLLocationManager *locationManager;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,47 +36,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
-    self.latitude = [[NSMutableArray alloc] init];
-    self.longitude = [[NSMutableArray alloc] init];
-    self.startTimes = [[NSMutableArray alloc] init];
-    self.stopTimes = [[NSMutableArray alloc] init];
+    self.parseAdded = false;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            NSLog(@"got %d objects", objects.count);
-            int i = 0;
-            
-            for (PFObject *object in objects) {
-                self.latitude[i] = [object objectForKey:@"latitude"];
-                
-                self.longitude[i] = [object objectForKey:@"longitude"];
-                NSMutableArray *holder = [[NSMutableArray alloc] init];
-                holder = [object objectForKey:@"timeStamps"];
-                
-               
-                self.startTimes[i] = holder[0];
-                self.stopTimes[i] = holder[holder.count - 1];
-                
-                i++;
-            }
-            
-            NSLog(@"%@  %@", self.startTimes[0], self.latitude[0][0]);
-        
-        }
-        else {
-            NSLog(@"error");
-        }
-        
-    }];
-    
-        
-        
-            
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
+    [locationManager startUpdatingLocation];
             
 }
 
@@ -97,28 +72,123 @@
 
     // Return the number of rows in the section.
  
-    return 5;
+
+    if (self.parseAdded)
+        return [self.latitude count];
+    return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
+     RouteTableViewCell *cell = (RouteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TableCell"];
+        cell = (RouteTableViewCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TableCell"];
     }
     
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
-    NSArray *holder = [query findObjects];
-
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"Route %d", indexPath.row + 1];
+    if ([self.latitude count] != 0) {
+        
+        GMSMutablePath *path = [[GMSMutablePath alloc] init];
+        
+        for (int i = 0; i < [self.latitude[indexPath.row] count]; i++) {
+            [path addLatitude:[[self.latitude[indexPath.row] objectAtIndex:i] doubleValue] longitude:[[self.longitude[indexPath.row] objectAtIndex:i] doubleValue]];
+        }
+        
+        NSTimeInterval time = [self.stopTimes[indexPath.row] doubleValue] - [self.startTimes[indexPath.row] doubleValue];
+        
+        [cell initializeCell:path  timeTaken:time];
+    }
     
     return cell;
 }
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpateToLocation: %@", newLocation);
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        NSString *latHold = [NSString stringWithFormat:@"%.3f", currentLocation.coordinate.latitude];
+        NSString *longHold = [NSString stringWithFormat:@"%.3f", currentLocation.coordinate.longitude];
+        self.currentLat = [latHold floatValue];
+        self.currentLong = [longHold floatValue];
+    }
+    
+    [locationManager stopUpdatingLocation];
+    
+    self.latitude = [[NSMutableArray alloc] init];
+    self.longitude = [[NSMutableArray alloc] init];
+    self.startTimes = [[NSMutableArray alloc] init];
+    self.stopTimes = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.parseAdded = true;
+            
+            int i = 0;
+            
+            for (PFObject *object in objects) {
+                NSArray *latHolder = [object objectForKey:@"latitude"];
+                float latFloat = [latHolder[0] floatValue];
+                NSString *latRound = [NSString stringWithFormat:@"%.3f", latFloat];
+                latFloat =[latRound floatValue];
+                
+                if (latFloat == self.currentLat)
+                    self.latitude[i] = latHolder;
+                else
+                    continue;
+                
+                NSArray *longHolder = [object objectForKey:@"longitude"];
+                float longFloat = [longHolder[0] floatValue];
+                NSString *longRound = [NSString stringWithFormat:@"%.3f", longFloat];
+                longFloat =[longRound floatValue];
+                
+                if (longFloat == self.currentLong)
+                    self.longitude[i] = longHolder;
+                else {
+                    [self.latitude removeLastObject];
+                    continue;
+                }
+                
+                
+                
+                
+                NSArray *holder = [[NSMutableArray alloc] init];
+                holder = [object objectForKey:@"timeStamps"];
+                
+                
+                self.startTimes[i] = holder[0];
+                self.stopTimes[i] = holder[holder.count - 1];
+                
+                i++;
+            }
+            
+            NSLog(@"%d", i);
+            [self.tableView reloadData];
+            
+        }
+        else {
+            NSLog(@"error");
+        }
+        
+    }];
+
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
@@ -131,8 +201,6 @@
         NSArray *latHolder  = self.latitude[ip.row];
         
         NSArray* longHolder = self.longitude[ip.row];
-        
-        NSLog(@"Lat: %@, Long: %@", latHolder[0], longHolder[1]);
         
         
         control.route = [[GMSMutablePath alloc] init];

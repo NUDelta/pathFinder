@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
-
+#import "RouteTableViewCell.h"
 #import "PathFinderMapViewController.h"
 
 

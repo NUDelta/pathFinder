@@ -117,7 +117,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Track your Route" image="button_background.png" id="NPo-go-eB6"/>
-                    <navigationItem key="navigationItem" id="qR9-rk-UU9"/>
+                    <navigationItem key="navigationItem" title="Track your Route" id="qR9-rk-UU9"/>
                     <connections>
                         <outlet property="forLength" destination="EdB-wr-qJ1" id="X7s-xB-wLd"/>
                         <outlet property="lengthPath" destination="J39-aF-EuH" id="QWm-zr-HGj"/>
@@ -133,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="290" y="72"/>
         </scene>
-        <!--Path Finder Map View Controller-->
+        <!--Path Finder Map View Controller - Map View-->
         <scene sceneID="Bhy-of-fSo">
             <objects>
                 <viewController id="Wm4-bE-5dF" customClass="PathFinderMapViewController" sceneMemberID="viewController">
@@ -146,29 +146,68 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MCs-pz-EzW"/>
+                    <navigationItem key="navigationItem" title="Map View" id="MCs-pz-EzW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jc-Xt-Aze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="954" y="226"/>
         </scene>
-        <!--Route Table View Controller - Root View Controller-->
+        <!--Route Table View Controller - View Other Routes-->
         <scene sceneID="ERa-ZG-eIK">
             <objects>
                 <tableViewController id="3Gc-H9-fMD" customClass="RouteTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NdU-dK-P6r">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="22" sectionFooterHeight="22" id="NdU-dK-P6r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" id="dHx-pw-fMx">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" rowHeight="137" id="dHx-pw-fMx" customClass="RouteTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHx-pw-fMx" id="OIg-Rh-VMU">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eky-y4-z4r">
+                                            <rect key="frame" x="0.0" y="6" width="287" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-qQ-mFu">
+                                            <rect key="frame" x="0.0" y="115" width="135" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uI-l4-pbV">
+                                            <rect key="frame" x="132" y="115" width="155" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="144-ft-7FI">
+                                            <rect key="frame" x="132" y="47" width="16" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivd-Oy-DNH">
+                                            <rect key="frame" x="0.0" y="76" width="287" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="distance" destination="7uI-l4-pbV" id="5nr-Bf-zqh"/>
+                                    <outlet property="end" destination="Ivd-Oy-DNH" id="Ao2-GD-nbb"/>
+                                    <outlet property="start" destination="eky-y4-z4r" id="lRq-4a-73F"/>
+                                    <outlet property="startToEnd" destination="144-ft-7FI" id="G7i-TA-Wr0"/>
+                                    <outlet property="time" destination="aPw-qQ-mFu" id="QDu-WP-QJL"/>
                                     <segue destination="Wm4-bE-5dF" kind="push" identifier="CellToMap" id="n9a-dj-Smy"/>
                                 </connections>
                             </tableViewCell>
@@ -178,17 +217,17 @@
                             <outlet property="delegate" destination="3Gc-H9-fMD" id="gsk-fR-nQv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="j8i-1C-VjS"/>
+                    <navigationItem key="navigationItem" title="View Other Routes" id="j8i-1C-VjS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4DY-TZ-uQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="290" y="645"/>
         </scene>
-        <!--Navigation Controller - View Your Route-->
+        <!--Navigation Controller - View Your Routes-->
         <scene sceneID="l5X-mS-0QY">
             <objects>
-                <navigationController definesPresentationContext="YES" id="A1U-Cd-8ai" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="View Your Route" id="ZXv-YY-6Xc"/>
+                <navigationController title="View Your Routes" definesPresentationContext="YES" id="A1U-Cd-8ai" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="View Other Routes" id="ZXv-YY-6Xc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EkF-aj-X4T">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

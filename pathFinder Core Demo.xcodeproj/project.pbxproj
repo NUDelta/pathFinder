@@ -14,6 +14,10 @@
 		012788EB1900AB8500ADFF5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EA1900AB8500ADFF5A /* MobileCoreServices.framework */; };
 		012788ED1900AB9400ADFF5A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EC1900AB9400ADFF5A /* Security.framework */; };
 		012788EF1900AB9C00ADFF5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012788EE1900AB9C00ADFF5A /* StoreKit.framework */; };
+		019A286A1914200900EA4AAD /* RouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 019A28691914200900EA4AAD /* RouteTableViewCell.m */; };
+		019A286C19144BD600EA4AAD /* bobb.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 019A286B19144BD600EA4AAD /* bobb.gpx */; };
+		019A286E19144BDE00EA4AAD /* ford.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 019A286D19144BDE00EA4AAD /* ford.gpx */; };
+		019A287019144BE800EA4AAD /* tech.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 019A286F19144BE800EA4AAD /* tech.gpx */; };
 		01A0CEBC191376F400AAC9BB /* PathFinderMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A0CEBB191376F400AAC9BB /* PathFinderMapViewController.m */; };
 		01EA133519017635004684AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA133419017635004684AF /* FacebookSDK.framework */; };
 		01EA1337190178AD004684AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA1336190178AD004684AF /* Social.framework */; };
@@ -65,6 +69,11 @@
 		012788EC1900AB9400ADFF5A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		012788EE1900AB9C00ADFF5A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		014D45511900F9C700E25A32 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		019A28681914200900EA4AAD /* RouteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableViewCell.h; sourceTree = "<group>"; };
+		019A28691914200900EA4AAD /* RouteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteTableViewCell.m; sourceTree = "<group>"; };
+		019A286B19144BD600EA4AAD /* bobb.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = bobb.gpx; sourceTree = "<group>"; };
+		019A286D19144BDE00EA4AAD /* ford.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ford.gpx; sourceTree = "<group>"; };
+		019A286F19144BE800EA4AAD /* tech.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tech.gpx; sourceTree = "<group>"; };
 		01A0CEBA191376F400AAC9BB /* PathFinderMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinderMapViewController.h; sourceTree = "<group>"; };
 		01A0CEBB191376F400AAC9BB /* PathFinderMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinderMapViewController.m; sourceTree = "<group>"; };
 		01EA133419017635004684AF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -151,6 +160,9 @@
 		38F2AFEE18F47DD6007B7DD4 = {
 			isa = PBXGroup;
 			children = (
+				019A286F19144BE800EA4AAD /* tech.gpx */,
+				019A286D19144BDE00EA4AAD /* ford.gpx */,
+				019A286B19144BD600EA4AAD /* bobb.gpx */,
 				38F2B00018F47DD6007B7DD4 /* pathFinder Core Demo */,
 				38F2B01F18F47DD6007B7DD4 /* pathFinder Core DemoTests */,
 				38F2AFF918F47DD6007B7DD4 /* Frameworks */,
@@ -214,6 +226,8 @@
 				38F2B00118F47DD6007B7DD4 /* Supporting Files */,
 				01EA133B190A2A16004684AF /* RouteTableViewController.h */,
 				01EA133C190A2A16004684AF /* RouteTableViewController.m */,
+				019A28681914200900EA4AAD /* RouteTableViewCell.h */,
+				019A28691914200900EA4AAD /* RouteTableViewCell.m */,
 			);
 			path = "pathFinder Core Demo";
 			sourceTree = "<group>";
@@ -328,6 +342,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F2B01318F47DD6007B7DD4 /* Images.xcassets in Resources */,
+				019A286C19144BD600EA4AAD /* bobb.gpx in Resources */,
+				019A287019144BE800EA4AAD /* tech.gpx in Resources */,
+				019A286E19144BDE00EA4AAD /* ford.gpx in Resources */,
 				38F2B00518F47DD6007B7DD4 /* InfoPlist.strings in Resources */,
 				38F2B00E18F47DD6007B7DD4 /* Main.storyboard in Resources */,
 				38F2B03418F49120007B7DD4 /* GoogleMaps.bundle in Resources */,
@@ -350,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F2B00718F47DD6007B7DD4 /* main.m in Sources */,
+				019A286A1914200900EA4AAD /* RouteTableViewCell.m in Sources */,
 				38F2B01118F47DD6007B7DD4 /* PathFinderViewController.m in Sources */,
 				38F2B00B18F47DD6007B7DD4 /* PathFinderAppDelegate.m in Sources */,
 				01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */,
@@ -494,7 +512,7 @@
 				INFOPLIST_FILE = "pathFinder Core Demo/pathFinder Core Demo-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "BB876719-D88E-4350-8B56-5FE61CE257B2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -504,8 +522,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Northwestern University";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Northwestern University";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/deltalab/Documents/Nick,
@@ -520,7 +538,7 @@
 				INFOPLIST_FILE = "pathFinder Core Demo/pathFinder Core Demo-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "BB876719-D88E-4350-8B56-5FE61CE257B2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

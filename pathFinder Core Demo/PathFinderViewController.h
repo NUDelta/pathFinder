@@ -12,5 +12,5 @@
 #import <Parse/Parse.h>
 #import "PathFinderMapViewController.h"
 
-@interface PathFinderViewController : UIViewController <CLLocationManagerDelegate>
+@interface PathFinderViewController : UIViewController <CLLocationManagerDelegate> 
 @end

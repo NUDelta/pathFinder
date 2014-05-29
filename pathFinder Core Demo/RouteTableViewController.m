@@ -9,14 +9,17 @@
 #import "RouteTableViewController.h"
 
 @interface RouteTableViewController ()
-@property (nonatomic) NSMutableArray *latitude;
-@property (nonatomic) NSMutableArray *longitude;
-@property (nonatomic) NSMutableArray *startTimes;
-@property (nonatomic) NSMutableArray *stopTimes;
-@property (nonatomic) GMSMutablePath *testPath;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+- (IBAction)changeSeg:(id)sender;
+
+@property (nonatomic) NSMutableArray *routeDetails;
+@property (nonatomic) NSArray *sortedDetails;
+
 @property BOOL parseAdded;
-@property float currentLat;
-@property float currentLong;
+@property int currentLat;
+@property int currentLong;
+@property BOOL sortByTime;
+
 @end
 
 @implementation RouteTableViewController
@@ -26,7 +29,6 @@ CLLocationManager *locationManager;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    NSLog(@"%@", @"first");
     if (self) {
         // Custom initialization
     }
@@ -43,6 +45,13 @@ CLLocationManager *locationManager;
     
     self.parseAdded = false;
     
+    if (self.segment.selectedSegmentIndex == 0) {
+        self.sortByTime = true;
+    }
+    else if (self.segment.selectedSegmentIndex == 1) {
+        self.sortByTime = false;
+    }
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -50,6 +59,7 @@ CLLocationManager *locationManager;
     [locationManager startUpdatingLocation];
             
 }
+
 
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +84,7 @@ CLLocationManager *locationManager;
  
 
     if (self.parseAdded)
-        return [self.latitude count];
+        return [self.routeDetails count];
     return 1;
 }
 
@@ -87,19 +97,10 @@ CLLocationManager *locationManager;
     if (cell == nil) {
         cell = (RouteTableViewCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TableCell"];
     }
-    
-    if ([self.latitude count] != 0) {
-        
-        GMSMutablePath *path = [[GMSMutablePath alloc] init];
-        
-        for (int i = 0; i < [self.latitude[indexPath.row] count]; i++) {
-            [path addLatitude:[[self.latitude[indexPath.row] objectAtIndex:i] doubleValue] longitude:[[self.longitude[indexPath.row] objectAtIndex:i] doubleValue]];
-        }
-        
-        NSTimeInterval time = [self.stopTimes[indexPath.row] doubleValue] - [self.startTimes[indexPath.row] doubleValue];
-        
-        [cell initializeCell:path  timeTaken:time];
+    if ([self.routeDetails count] > 0) {
+            [cell initializeCell:[self.sortedDetails[indexPath.row] getPath]  timeTaken:[self.sortedDetails[indexPath.row] getTime]];
     }
+
     
     return cell;
 }
@@ -121,18 +122,15 @@ CLLocationManager *locationManager;
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
-        NSString *latHold = [NSString stringWithFormat:@"%.3f", currentLocation.coordinate.latitude];
-        NSString *longHold = [NSString stringWithFormat:@"%.3f", currentLocation.coordinate.longitude];
-        self.currentLat = [latHold floatValue];
-        self.currentLong = [longHold floatValue];
+        
+        self.currentLat = (int)(currentLocation.coordinate.latitude * 1000);
+        self.currentLong = (int)(currentLocation.coordinate.longitude * 1000);
     }
     
     [locationManager stopUpdatingLocation];
     
-    self.latitude = [[NSMutableArray alloc] init];
-    self.longitude = [[NSMutableArray alloc] init];
-    self.startTimes = [[NSMutableArray alloc] init];
-    self.stopTimes = [[NSMutableArray alloc] init];
+    self.routeDetails = [[NSMutableArray alloc] init];
+    self.sortedDetails = [[NSArray alloc] init];
     
     PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -141,43 +139,45 @@ CLLocationManager *locationManager;
             
             int i = 0;
             
+            GMSMutablePath *path = [[GMSMutablePath alloc] init];
+            
             for (PFObject *object in objects) {
-                NSArray *latHolder = [object objectForKey:@"latitude"];
-                float latFloat = [latHolder[0] floatValue];
-                NSString *latRound = [NSString stringWithFormat:@"%.3f", latFloat];
-                latFloat =[latRound floatValue];
                 
-                if (latFloat == self.currentLat)
-                    self.latitude[i] = latHolder;
-                else
-                    continue;
+                NSArray *latHolder = [object objectForKey:@"latitude"];
+                int latFloat = (int)([latHolder[0] floatValue] * 1000);
                 
                 NSArray *longHolder = [object objectForKey:@"longitude"];
-                float longFloat = [longHolder[0] floatValue];
-                NSString *longRound = [NSString stringWithFormat:@"%.3f", longFloat];
-                longFloat =[longRound floatValue];
+                int longFloat = (int)([longHolder[0] floatValue] * 1000);
                 
-                if (longFloat == self.currentLong)
-                    self.longitude[i] = longHolder;
-                else {
-                    [self.latitude removeLastObject];
-                    continue;
+                if (longFloat == self.currentLong && latFloat == self.currentLat) {
+                    
+                    for (int j = 0; j < [longHolder count]; j++) {
+                        [path addLatitude:[[latHolder objectAtIndex:j] doubleValue] longitude:[[longHolder objectAtIndex:j] doubleValue]];
+                    }
+
+                    NSArray *holder = [[NSMutableArray alloc] init];
+                    holder = [object objectForKey:@"timeStamps"];
+                
+                    double hold = [holder[holder.count - 1] doubleValue] - [holder[0] doubleValue];
+                    
+                    self.routeDetails[i] = [[RouteDetail alloc] initWithRoute:path time:hold];
+                    
+                    i++;
                 }
                 
-                
-                
-                
-                NSArray *holder = [[NSMutableArray alloc] init];
-                holder = [object objectForKey:@"timeStamps"];
-                
-                
-                self.startTimes[i] = holder[0];
-                self.stopTimes[i] = holder[holder.count - 1];
-                
-                i++;
             }
             
-            NSLog(@"%d", i);
+            self.sortedDetails = [self.routeDetails sortedArrayUsingComparator:^NSComparisonResult(RouteDetail *r1, RouteDetail *r2){
+                if (self.sortByTime) {
+                    return [r1 compareTime:r2];
+                }
+                else {
+                    return [r1 compareDist:r2];
+                }
+            }];
+            
+            
+            
             [self.tableView reloadData];
             
         }
@@ -198,19 +198,33 @@ CLLocationManager *locationManager;
         
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         
-        NSArray *latHolder  = self.latitude[ip.row];
-        
-        NSArray* longHolder = self.longitude[ip.row];
-        
-        
-        control.route = [[GMSMutablePath alloc] init];
-        
-        for (int i = 0; i < latHolder.count; i++) {
-            [control.route addLatitude:[latHolder[i] doubleValue] longitude:[longHolder[i] doubleValue]];
-        }
-        
+        control.route = [[GMSMutablePath alloc] initWithPath:[self.sortedDetails[ip.row] getPath]];
+
     }
 }
+
+
+
+
+- (IBAction)changeSeg:(id)sender {
+    if (self.segment.selectedSegmentIndex == 0) {
+        self.sortByTime = true;
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        [locationManager startUpdatingLocation];
+    }
+    else if (self.segment.selectedSegmentIndex == 1) {
+        self.sortByTime = false;
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        [locationManager startUpdatingLocation];
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -260,5 +274,6 @@ CLLocationManager *locationManager;
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

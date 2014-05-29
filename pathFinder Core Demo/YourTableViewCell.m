@@ -1,14 +1,14 @@
 //
-//  RouteTableViewCell.m
+//  YourTableViewCell.m
 //  pathFinder Core Demo
 //
-//  Created by Nick Scoliard on 5/2/14.
+//  Created by Nick Scoliard on 5/23/14.
 //  Copyright (c) 2014 Delta Lab. All rights reserved.
 //
 
-#import "RouteTableViewCell.h"
+#import "YourTableViewCell.h"
 
-@implementation RouteTableViewCell
+@implementation YourTableViewCell
 CLLocationManager *locationManager;
 CLGeocoder *geocoder;
 CLPlacemark *placemark;
@@ -26,13 +26,18 @@ NSString *start;
 
 - (void)awakeFromNib
 {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.viewForBaselineLayout addGestureRecognizer:tap];
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -72,8 +77,8 @@ NSString *start;
     
     CLLocationCoordinate2D end = [self.route coordinateAtIndex:[self.route count] - 1];
     
-   
-   
+    
+    
     NSString *urlStringEnd = @"https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
     
     urlStringEnd = [urlStringEnd stringByAppendingString:@"key=AIzaSyDCevZ4LtOP-XMSvfGd3PNkdS1hoTSYFP8"];
@@ -111,4 +116,51 @@ NSString *start;
         self.distance.text = [NSString stringWithFormat:@"Distance: %.2f m", dist];
 }
 
+-(void)HideName {
+    [self.EnterName setHidden:TRUE];
+    [self.nameField setHidden:TRUE];
+    [self.start setHidden:FALSE];
+    [self.end setHidden:FALSE];
+    [self.time setHidden:FALSE];
+    [self.distance setHidden:FALSE];
+    [self.to setHidden:FALSE];
+}
+
+-(void)HideLabels {
+    [self.start setHidden:TRUE];
+    [self.end setHidden:TRUE];
+    [self.time setHidden:TRUE];
+    [self.distance setHidden:TRUE];
+    [self.to setHidden:TRUE];
+    [self.EnterName setHidden:FALSE];
+    [self.nameField setHidden:FALSE];
+}
+
+-(void)HideAll{
+    [self.start setHidden:TRUE];
+    [self.end setHidden:TRUE];
+    [self.time setHidden:TRUE];
+    [self.distance setHidden:TRUE];
+    [self.to setHidden:TRUE];
+    [self.EnterName setHidden:TRUE];
+    [self.nameField setHidden:TRUE];
+}
+
+- (void)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    self.name = textField.text;
+    
+    NSArray *arrayPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *docDirectory = [arrayPaths objectAtIndex:0];
+    
+    NSString *filePath = [docDirectory stringByAppendingString:@"/Name.txt"];
+    
+    [self.name writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+}
+
+-(void)dismissKeyboard {
+    [self.nameField resignFirstResponder];
+}
 @end

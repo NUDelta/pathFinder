@@ -22,6 +22,9 @@
 		01EA133519017635004684AF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA133419017635004684AF /* FacebookSDK.framework */; };
 		01EA1337190178AD004684AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01EA1336190178AD004684AF /* Social.framework */; };
 		01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EA133C190A2A16004684AF /* RouteTableViewController.m */; };
+		01F3F97F192FD5C700B2B808 /* YourRouteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3F97E192FD5C700B2B808 /* YourRouteTableViewController.m */; };
+		01F3F982192FD8AB00B2B808 /* YourTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3F981192FD8AB00B2B808 /* YourTableViewCell.m */; };
+		01F3F9881937327400B2B808 /* RouteDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F3F9871937327400B2B808 /* RouteDetail.m */; };
 		38F2AFFB18F47DD6007B7DD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */; };
 		38F2AFFD18F47DD6007B7DD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */; };
 		38F2AFFF18F47DD6007B7DD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F2AFFE18F47DD6007B7DD4 /* UIKit.framework */; };
@@ -80,6 +83,12 @@
 		01EA1336190178AD004684AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		01EA133B190A2A16004684AF /* RouteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteTableViewController.h; sourceTree = "<group>"; };
 		01EA133C190A2A16004684AF /* RouteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteTableViewController.m; sourceTree = "<group>"; };
+		01F3F97D192FD5C700B2B808 /* YourRouteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourRouteTableViewController.h; sourceTree = "<group>"; };
+		01F3F97E192FD5C700B2B808 /* YourRouteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourRouteTableViewController.m; sourceTree = "<group>"; };
+		01F3F980192FD8AB00B2B808 /* YourTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourTableViewCell.h; sourceTree = "<group>"; };
+		01F3F981192FD8AB00B2B808 /* YourTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourTableViewCell.m; sourceTree = "<group>"; };
+		01F3F9861937327400B2B808 /* RouteDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDetail.h; sourceTree = "<group>"; };
+		01F3F9871937327400B2B808 /* RouteDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDetail.m; sourceTree = "<group>"; };
 		38F2AFF718F47DD6007B7DD4 /* pathFinder Core Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pathFinder Core Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F2AFFA18F47DD6007B7DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38F2AFFC18F47DD6007B7DD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -228,6 +237,12 @@
 				01EA133C190A2A16004684AF /* RouteTableViewController.m */,
 				019A28681914200900EA4AAD /* RouteTableViewCell.h */,
 				019A28691914200900EA4AAD /* RouteTableViewCell.m */,
+				01F3F97D192FD5C700B2B808 /* YourRouteTableViewController.h */,
+				01F3F97E192FD5C700B2B808 /* YourRouteTableViewController.m */,
+				01F3F980192FD8AB00B2B808 /* YourTableViewCell.h */,
+				01F3F981192FD8AB00B2B808 /* YourTableViewCell.m */,
+				01F3F9861937327400B2B808 /* RouteDetail.h */,
+				01F3F9871937327400B2B808 /* RouteDetail.m */,
 			);
 			path = "pathFinder Core Demo";
 			sourceTree = "<group>";
@@ -366,9 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F3F982192FD8AB00B2B808 /* YourTableViewCell.m in Sources */,
 				38F2B00718F47DD6007B7DD4 /* main.m in Sources */,
 				019A286A1914200900EA4AAD /* RouteTableViewCell.m in Sources */,
 				38F2B01118F47DD6007B7DD4 /* PathFinderViewController.m in Sources */,
+				01F3F9881937327400B2B808 /* RouteDetail.m in Sources */,
+				01F3F97F192FD5C700B2B808 /* YourRouteTableViewController.m in Sources */,
 				38F2B00B18F47DD6007B7DD4 /* PathFinderAppDelegate.m in Sources */,
 				01EA133D190A2A16004684AF /* RouteTableViewController.m in Sources */,
 				01A0CEBC191376F400AAC9BB /* PathFinderMapViewController.m in Sources */,

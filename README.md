@@ -9,15 +9,17 @@ The next two view controllers, RouteTableViewController, and YourRouteTableViewC
 The final view controller, is PathFinderMapViewController. This view controller is linked to by all of the previous view controllers, and shows a route on a google map view. All the view controllers pass a route to this view controller, which then displays as a pop up inside the original view controller, allowing a user to go back and create a new route or view another route. 
 
 How to Run:
-In order to run the application through Xcode, the following packages must be installed:
-Social.framework
-SystemConfiguration.framework
-StoreKit.framework
-Security.framework
-QuartzCore.framework
-MobileCoreServices.framework
-libz.dylib
-CoreGraphics.framework
+In order to run the application through Xcode, the following packages must be installed:  
+Social.framework  
+  
+   SystemConfiguration.framework  
+  
+  StoreKit.framework  
+Security.framework  
+  QuartzCore.framework  
+  MobileCoreServices.framework
+  libz.dylib
+  CoreGraphics.framework
 CFNetwork.framework
 AudioToolbox.framework
 Parse.framework

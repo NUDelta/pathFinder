@@ -11,31 +11,29 @@ The final view controller, is PathFinderMapViewController. This view controller 
 How to Run:
 In order to run the application through Xcode, the following packages must be installed:  
 Social.framework  
-  
-   SystemConfiguration.framework  
-  
-  StoreKit.framework  
+SystemConfiguration.framework  
+StoreKit.framework  
 Security.framework  
-  QuartzCore.framework  
-  MobileCoreServices.framework
-  libz.dylib
-  CoreGraphics.framework
-CFNetwork.framework
-AudioToolbox.framework
-Parse.framework
-GoogleMaps.framework
-libc++.dylib
-OpenGLES.framework
-libicucore.dylib
-ImageIO.framework
-GLKIt.framework
-CoreData.framework
-AVFoundation.framework
-CoreLocation.framework
-FacebookSDK.framework
-UIKit.framework
-Foundation.framework
-
+QuartzCore.framework  
+MobileCoreServices.framework  
+libz.dylib  
+CoreGraphics.framework  
+CFNetwork.framework  
+AudioToolbox.framework  
+Parse.framework  
+GoogleMaps.framework  
+libc++.dylib  
+OpenGLES.framework  
+libicucore.dylib  
+ImageIO.framework  
+GLKIt.framework  
+CoreData.framework  
+AVFoundation.framework  
+CoreLocation.framework  
+FacebookSDK.framework  
+UIKit.framework  
+Foundation.framework  
+  
 
 To check or add directories, go to Build Settings, and then Link Binary with Libraries.
 

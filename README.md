@@ -9,7 +9,9 @@ The next two view controllers, RouteTableViewController, and YourRouteTableViewC
 The final view controller, is PathFinderMapViewController. This view controller is linked to by all of the previous view controllers, and shows a route on a google map view. All the view controllers pass a route to this view controller, which then displays as a pop up inside the original view controller, allowing a user to go back and create a new route or view another route. 
 
 How to Run:
-In order to run the application through Xcode, the following packages must be installed:  
+In order to run the application through Xcode, the following packages must be installed:
+
+The following can be installed by clicking the + button in the Link Binary with Libraries dropdown menu, in the Build Phases tab:  
 Social.framework  
 SystemConfiguration.framework  
 StoreKit.framework  
@@ -20,8 +22,6 @@ libz.dylib
 CoreGraphics.framework  
 CFNetwork.framework  
 AudioToolbox.framework  
-Parse.framework  
-GoogleMaps.framework  
 libc++.dylib  
 OpenGLES.framework  
 libicucore.dylib  
@@ -30,11 +30,13 @@ GLKIt.framework
 CoreData.framework  
 AVFoundation.framework  
 CoreLocation.framework  
-FacebookSDK.framework  
 UIKit.framework  
 Foundation.framework  
   
+The following frameworks must be installed, and are included in the git folder:  
+FacebookSDK.framework  
+Parse.framework  
+GoogleMaps.framework  
 
-To check or add directories, go to Build Settings, and then Link Binary with Libraries.
 
 Once these directories are added, choose a build location, and press Run.

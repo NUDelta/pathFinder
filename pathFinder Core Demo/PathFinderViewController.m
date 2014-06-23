@@ -46,7 +46,7 @@ CLLocationManager *locationManager;
     if(!_testPath) _testPath = [[GMSMutablePath alloc] init];
     return _testPath;
 }
-
+//Loads the view controller
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,7 +63,7 @@ CLLocationManager *locationManager;
     NSString *filePath = [docDirectory stringByAppendingString:@"/Name.txt"];
     
     NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    
+    //Change the display based on if a name exists in memory or not
     if (!fileContents) {
         [self.startLocation setHidden:TRUE];
         [self.nameField setHidden:FALSE];
@@ -109,7 +109,7 @@ CLLocationManager *locationManager;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//Starts tracking the user's movement if the Start Tracking button is pressed
 - (IBAction)getLocation:(id)sender {
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -129,7 +129,7 @@ CLLocationManager *locationManager;
     
     [locationManager startUpdatingLocation];
 }
-
+//Stops tracking the user's movement when the Stop Tracking button is pressed, and displays statistics from the route
 - (IBAction)stopTracking:(id)sender {
     [locationManager stopUpdatingLocation];
     
@@ -171,7 +171,7 @@ CLLocationManager *locationManager;
         self.forLength.text = [NSString stringWithFormat:@"%.2f km", length2];
     }
 }
-
+//Restarts view controller if Show Route on Map button is pressed
 - (IBAction)showRoute:(id)sender {
    
     [self.testPath removeAllCoordinates];
@@ -202,7 +202,7 @@ CLLocationManager *locationManager;
     
     [errorAlert show];
 }
-
+//Tracks user's movement and stores it in Parse
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     NSLog(@"didUpateToLocation: %@", newLocation);
@@ -229,7 +229,7 @@ CLLocationManager *locationManager;
         [self.parsePath saveInBackground];
     }
 }
-
+//Chnages the view controller if the Show Route on Map button is clicked to show the past route on a map
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
@@ -237,11 +237,11 @@ CLLocationManager *locationManager;
     if ([segue.identifier isEqualToString:@"RouteToMap"]) {
         PathFinderMapViewController *control = [segue destinationViewController];
         
-        control.route = [[GMSMutablePath alloc] initWithPath:self.testPath];
+        [control setPath:self.testPath];
 
     }
 }
-
+//Chnages view controller to tracking mode if user hits return
 - (void)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     self.name = textField.text;
@@ -263,11 +263,11 @@ CLLocationManager *locationManager;
     [self viewDidLoad];
     
 }
-
+//Dismisses keyboard if user touches outside keyboard
 -(void)dismissKeyboard {
     [self.nameField resignFirstResponder];
 }
-
+//Deletes the stored name and restarts the view controller if the Delete Name button is pressed
 -(void)deleteName {
     self.name = nil;
     

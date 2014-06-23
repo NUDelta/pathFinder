@@ -31,7 +31,7 @@
     }
     return self;
 }
-
+//Loads the view contorller
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,24 +63,22 @@
 
 #pragma mark - Table view data source
 
+// Return the number of sections.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
+    
     return 1;
     
 }
-
+ // Return the number of rows in the section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    // Return the number of rows in the section.
-    
     if (self.parseAdded)
         return [self.sortedDetails count];
     return 1;
 }
 
-
+//Initilizes the cells based on sortedDetails
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YourTableViewCell *cell = (YourTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"YourTableCell" forIndexPath:indexPath];
@@ -98,7 +96,10 @@
 }
 
 #pragma mark - CLLocationManagerDelegate
-
+/**
+ Fills the private variables with routes from Parse based on the input name
+ 
+ */
 - (void)startTable
 {
     NSArray *arrayPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -120,6 +121,7 @@
     self.sortedDetails = [[NSArray alloc] init];
     self.routeDetails = [[NSMutableArray alloc] init];
     
+    //Checks Parse for routes with user's name and adds them to the private variable routeDetails
     PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
     [query whereKey:@"Name" equalTo:self.name];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -128,9 +130,10 @@
             
             int i = 0;
             
-            GMSMutablePath *path = [[GMSMutablePath alloc] init];
+            
             
             for (PFObject *object in objects) {
+                GMSMutablePath *path = [[GMSMutablePath alloc] init];
                 
                 NSArray *latHolder  = [object objectForKey:@"latitude"];
                 
@@ -140,7 +143,7 @@
                     [path addLatitude:[[latHolder objectAtIndex:j] doubleValue] longitude:[[longHolder objectAtIndex:j] doubleValue]];
                 }
                 
-                
+                NSLog(@"Path Lat: %f", [path coordinateAtIndex:0].latitude);
                 
                 NSArray *holder = [[NSMutableArray alloc] init];
                 holder = [object objectForKey:@"timeStamps"];
@@ -152,6 +155,8 @@
                 i++;
             }
             
+           
+            //sorts routeDetails into the sorted array, sortedDetails based on the Segmented Control
             self.sortedDetails = [self.routeDetails sortedArrayUsingComparator:^NSComparisonResult(RouteDetail *r1, RouteDetail *r2){
                 if (self.sortByTime) {
                     return [r1 compareTime:r2];
@@ -228,7 +233,14 @@
 
  #pragma mark - Navigation
  
- // In a storyboard-based application, you will often want to do a little preparation before navigation
+/**
+ Changes the view controller if a cell is clicked to show the selected route on a map
+ 
+ @param segue
+ identifies the segue requested from view controllers
+ @param sender
+ identifies the view controller that sent the segue request
+ */
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
  // Get the new view controller using [segue destinationViewController].
@@ -239,18 +251,16 @@
          NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
          
          
-         control.route = [[GMSMutablePath alloc] initWithPath:[self.sortedDetails[ip.row] getPath]];
+         [control setPath:[self.sortedDetails[ip.row] getPath]];
      }
  }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"Row Selected = %i",indexPath.row);
-    
-    [self performSegueWithIdentifier:@"testID" sender:self.view];
-}
+/**
+ Responds to a change in Segmented Control if the user touches it
 
-
+ @param sender
+ identifies the view controller where the gesture occurred
+ */
 - (IBAction)segChange:(id)sender {
     if (self.segment.selectedSegmentIndex == 0) {
         self.sortByTime = true;

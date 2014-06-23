@@ -34,7 +34,7 @@ CLLocationManager *locationManager;
     }
     return self;
 }
-
+//Loads the view controller
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -88,7 +88,7 @@ CLLocationManager *locationManager;
     return 1;
 }
 
-
+//Initilizes the cells based on sortedDetails
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      RouteTableViewCell *cell = (RouteTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
@@ -121,6 +121,7 @@ CLLocationManager *locationManager;
     NSLog(@"didUpateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
+    //Collects current location
     if (currentLocation != nil) {
         
         self.currentLat = (int)(currentLocation.coordinate.latitude * 1000);
@@ -132,6 +133,7 @@ CLLocationManager *locationManager;
     self.routeDetails = [[NSMutableArray alloc] init];
     self.sortedDetails = [[NSArray alloc] init];
     
+    //Finds routes in Parse that start at the current location
     PFQuery *query = [PFQuery queryWithClassName:@"ParsePath"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -166,7 +168,7 @@ CLLocationManager *locationManager;
                 }
                 
             }
-            
+            //Sorts routeDetails into the sorted array, sortedDetails based on the Segmented Control
             self.sortedDetails = [self.routeDetails sortedArrayUsingComparator:^NSComparisonResult(RouteDetail *r1, RouteDetail *r2){
                 if (self.sortByTime) {
                     return [r1 compareTime:r2];
@@ -188,7 +190,14 @@ CLLocationManager *locationManager;
     }];
 
 }
-
+/**
+ Changes the view controller if a cell is clicked to show the selected route on a map
+ 
+ @param segue
+ identifies the segue requested from view controllers
+ @param sender
+ identifies the view controller that sent the segue request
+ */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
@@ -198,14 +207,19 @@ CLLocationManager *locationManager;
         
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         
-        control.route = [[GMSMutablePath alloc] initWithPath:[self.sortedDetails[ip.row] getPath]];
+        [control setPath:[self.sortedDetails[ip.row] getPath]];
 
     }
 }
 
 
 
-
+/**
+ Responds to a change in Segmented Control if the user touches it
+ 
+ @param sender
+ identifies the view controller where the gesture occurred
+ */
 - (IBAction)changeSeg:(id)sender {
     if (self.segment.selectedSegmentIndex == 0) {
         self.sortByTime = true;

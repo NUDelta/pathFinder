@@ -20,6 +20,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *start;
 @property GMSMutablePath* route;
 
+/**
+ Creates a table cell with a given route and time for the route
+ 
+ @param inputRoute
+ The route for the cell
+ @param time
+ The time taken to walk the given route
+ */
 - (void)initializeCell:(GMSMutablePath *)inputRoute timeTaken:(NSTimeInterval)time;
 
 @end

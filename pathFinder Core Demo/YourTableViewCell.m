@@ -26,12 +26,6 @@ NSString *start;
 
 - (void)awakeFromNib
 {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    
-    [self.viewForBaselineLayout addGestureRecognizer:tap];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -69,6 +63,7 @@ NSString *start;
         id result = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
         if (error == nil) {
             self.start.text = [[[result objectForKey:@"results"] firstObject] objectForKey:@"name"];
+            NSLog(@"Text: %@, Lat: %f\n", self.start.text, [self.route coordinateAtIndex:0].latitude);
         }
     }
     
@@ -99,6 +94,7 @@ NSString *start;
         id result = [NSJSONSerialization JSONObjectWithData:jsonDataEnd options:NSJSONReadingMutableContainers error:&error];
         if (error == nil) {
             self.end.text = [[[result objectForKey:@"results"] firstObject] objectForKey:@"name"];
+            NSLog(@"Text: %@, Lat: %f\n", self.end.text, end.latitude);
         }
     }
     
@@ -114,53 +110,5 @@ NSString *start;
         self.distance.text = [NSString stringWithFormat:@"Distance: %.0f km", dist/1000];
     else
         self.distance.text = [NSString stringWithFormat:@"Distance: %.2f m", dist];
-}
-
--(void)HideName {
-    [self.EnterName setHidden:TRUE];
-    [self.nameField setHidden:TRUE];
-    [self.start setHidden:FALSE];
-    [self.end setHidden:FALSE];
-    [self.time setHidden:FALSE];
-    [self.distance setHidden:FALSE];
-    [self.to setHidden:FALSE];
-}
-
--(void)HideLabels {
-    [self.start setHidden:TRUE];
-    [self.end setHidden:TRUE];
-    [self.time setHidden:TRUE];
-    [self.distance setHidden:TRUE];
-    [self.to setHidden:TRUE];
-    [self.EnterName setHidden:FALSE];
-    [self.nameField setHidden:FALSE];
-}
-
--(void)HideAll{
-    [self.start setHidden:TRUE];
-    [self.end setHidden:TRUE];
-    [self.time setHidden:TRUE];
-    [self.distance setHidden:TRUE];
-    [self.to setHidden:TRUE];
-    [self.EnterName setHidden:TRUE];
-    [self.nameField setHidden:TRUE];
-}
-
-- (void)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    self.name = textField.text;
-    
-    NSArray *arrayPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    NSString *docDirectory = [arrayPaths objectAtIndex:0];
-    
-    NSString *filePath = [docDirectory stringByAppendingString:@"/Name.txt"];
-    
-    [self.name writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-}
-
--(void)dismissKeyboard {
-    [self.nameField resignFirstResponder];
 }
 @end

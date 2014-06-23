@@ -8,6 +8,12 @@
 
 #import "RouteDetail.h"
 
+@interface RouteDetail ()
+@property GMSMutablePath *path;
+@property double time;
+@property double distance;
+@end
+
 @implementation RouteDetail
 
 

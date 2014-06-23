@@ -9,6 +9,7 @@
 #import "PathFinderMapViewController.h"
 
 @interface PathFinderMapViewController ()
+@property (strong, nonatomic) GMSMutablePath *route;
 
 @end
 
@@ -23,7 +24,7 @@
     }
     return self;
 }
-
+//Loads the view controller and displays the route on a map
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,6 +53,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)setPath:(GMSMutablePath *)route
+{
+    self.route = [[GMSMutablePath alloc] initWithPath:route];
+}
 /*
 #pragma mark - Navigation
 

@@ -200,7 +200,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Be0-3I-FRr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dGa-1r-yWm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -352,7 +352,7 @@
                                     <outlet property="start" destination="o0r-VF-6fM" id="T2Q-yL-iDe"/>
                                     <outlet property="time" destination="Lew-VA-dfR" id="LHc-JT-G1s"/>
                                     <outlet property="to" destination="YKC-H6-6LB" id="nbz-gx-6pb"/>
-                                    <segue destination="Wm4-bE-5dF" kind="push" id="DIb-lI-kY7"/>
+                                    <segue destination="Wm4-bE-5dF" kind="push" identifier="YourCellToMap" id="ueO-JK-tNW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -426,6 +426,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DIb-lI-kY7"/>
+        <segue reference="Yct-B3-u1N"/>
     </inferredMetricsTieBreakers>
 </document>

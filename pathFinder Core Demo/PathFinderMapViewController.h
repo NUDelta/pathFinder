@@ -11,7 +11,13 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface PathFinderMapViewController : UIViewController
-@property (strong, nonatomic) GMSMutablePath *route;
 
+/**
+ Sets the private variable @c route to given route
+ 
+ @param route
+ Route being passed into the map contorller
+ */
+- (void)setPath:(GMSMutablePath *)route;
 
 @end

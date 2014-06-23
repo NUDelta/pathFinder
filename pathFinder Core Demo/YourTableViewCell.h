@@ -22,11 +22,13 @@
 @property GMSMutablePath* route;
 @property NSString *name;
 
+/**
+ Creates a table cell with a given route and time for the route
+
+ @param inputRoute
+ The route for the cell
+ @param time
+ The time taken to walk the given route
+ */
 - (void)initializeCell:(GMSMutablePath *)inputRoute timeTaken:(NSTimeInterval)time;
-
--(void)HideName;
-
--(void)HideLabels;
-
--(void)HideAll;
 @end
